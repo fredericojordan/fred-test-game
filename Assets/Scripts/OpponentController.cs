@@ -20,11 +20,22 @@ public class OpponentController : MonoBehaviour {
 		rb.position = new Vector3(rand_x, 0.5f, rand_z);
 	}
 
-    void FixedUpdate()
+	void FixedUpdate()
 	{
 		Vector3 movement = center - transform.position;
 		movement[1] = 0.0f;
 		rb.AddForce(movement * speed);
+
+		if (transform.position[1] <= -5.0f) {
+			Kill();
+		}
+	}
+
+	void Kill()
+	{
+		rb.isKinematic = true;
+		Renderer rend = GetComponent<Renderer>();
+		rend.material.SetColor("_Color", new Color(0.25f, 0.0f, 0.0f, 1.0f));
 	}
 
 }
