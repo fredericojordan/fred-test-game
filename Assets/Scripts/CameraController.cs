@@ -19,9 +19,9 @@ public class CameraController : MonoBehaviour {
 
 	void LateUpdate ()
 	{
-	    Vector3 desired_position = player.transform.position + offset + (rb.velocity * speed_offset_factor);
-	    Vector3 delta_position = desired_position - transform.position;
-	    
+		Vector3 desired_position = player.transform.position + offset + (rb.velocity * speed_offset_factor);
+		Vector3 delta_position = desired_position - transform.position;
+
 		transform.position += delta_position * (1.0f/damping_factor);
 	}
 }
